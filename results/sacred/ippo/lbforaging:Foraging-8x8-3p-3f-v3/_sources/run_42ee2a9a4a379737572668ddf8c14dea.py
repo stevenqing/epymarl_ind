@@ -57,24 +57,22 @@ def run(_run, _config, _log):
         logger.setup_tb(tb_exp_direc)
 
     if args.use_wandb:
-        logger.setup_wandb(
-            _config, 
-            team_name = args.wandb_team, 
-            project_name = args.wandb_project, 
-            mode = args.wandb_mode,
-            name = str(map_name) + "_" + str(_config["name"]) + "_" + str(_config["seed"]),
-            group = str(map_name) + "_" + str(_config["name"])
-        )
-        # wandb.init(
-        #     config=_config,
-        #     project=args.wandb_project,
-        #     entity=args.wandb_team, 
-        #     notes=socket.gethostname(),
-        #     name=str(map_name) + "_" + str(_config["name"]) + "_" + str(_config["seed"]),
-        #     group=str(map_name) + "_" + str(_config["name"]),
-        #     dir="./",
-        #     job_type="training",
-        #     reinit=True)
+        # logger.setup_wandb(
+        #     _config, 
+        #     team_name = args.wandb_team, 
+        #     project_name = args.wandb_project, 
+        #     mode = args.wandb_mode,
+        # )
+        wandb.init(
+            config=_config,
+            project=args.wandb_project,
+            entity=args.wandb_team, 
+            notes=socket.gethostname(),
+            name=str(map_name) + "_" + str(_config["name"]) + "_" + str(_config["seed"]),
+            group=str(map_name) + "_" + str(_config["name"]),
+            dir="./",
+            job_type="training",
+            reinit=True)
     # sacred is on by default
     logger.setup_sacred(_run)
 
