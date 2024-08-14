@@ -57,7 +57,7 @@ def run(_run, _config, _log):
         logger.setup_tb(tb_exp_direc)
 
     if args.use_wandb:
-        if _config["common_reward"] == "True":
+        if _config["common_reward"] == True:
             common_reward = "common_reward"
         else:
             common_reward = "individual_reward"
