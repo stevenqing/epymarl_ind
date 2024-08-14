@@ -66,7 +66,7 @@ def run(_run, _config, _log):
             team_name = args.wandb_team, 
             project_name = args.wandb_project, 
             mode = args.wandb_mode,
-            name = str(_config["time_limit"]) + "_" + str(common_reward) + "_" + str(map_name) + "_" + str(_config["name"]) + "_" + str(_config["seed"]),
+            name = str(_config["env_args"]["time_limit"]) + "_" + str(common_reward) + "_" + str(map_name) + "_" + str(_config["name"]) + "_" + str(_config["seed"]),
             group = str(map_name) + "_" + str(_config["name"])
         )
         # wandb.init(
