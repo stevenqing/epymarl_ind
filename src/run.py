@@ -57,12 +57,16 @@ def run(_run, _config, _log):
         logger.setup_tb(tb_exp_direc)
 
     if args.use_wandb:
+        if _config["common_reward"] == "True":
+            common_reward = "common_reward"
+        else:
+            common_reward = "individual_reward"
         logger.setup_wandb(
             _config, 
             team_name = args.wandb_team, 
             project_name = args.wandb_project, 
             mode = args.wandb_mode,
-            name = str(map_name) + "_" + str(_config["name"]) + "_" + str(_config["seed"]),
+            name = str(_config["time_limit"] + "_" + str(common_reward) + "_" str(map_name) + "_" + str(_config["name"]) + "_" + str(_config["seed"]),
             group = str(map_name) + "_" + str(_config["name"])
         )
         # wandb.init(
